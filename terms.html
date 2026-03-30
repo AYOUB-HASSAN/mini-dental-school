@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | Mini Dental School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    if (localStorage.getItem('lang') === 'ar') { document.documentElement.setAttribute('lang', 'ar'); document.documentElement.setAttribute('dir', 'rtl'); }
+    tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'], arabic: ['Cairo','sans-serif'] }, colors: { brand: { navy: '#132560', light: '#7ebdff' }, dark: { bg: '#060d1f', card: '#0c1631', surface: '#111d3a' } }, animation: { 'blob': 'blob 10s infinite', 'blob-delayed': 'blob 10s infinite 5s' }, keyframes: { blob: { '0%,100%': { transform: 'translate(0,0) scale(1)' }, '33%': { transform: 'translate(30px,-50px) scale(1.1)' }, '66%': { transform: 'translate(-20px,20px) scale(0.9)' } } } } } }
+  </script>
+  <style>
+    body { transition: background-color 0.5s ease, color 0.5s ease; overflow-x: hidden; }
+    [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] p, [dir="rtl"] a, [dir="rtl"] button, [dir="rtl"] span, [dir="rtl"] li { font-family: 'Cairo', sans-serif !important; }
+    .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #132560, #3b82f6); }
+    .dark .text-gradient { background-image: linear-gradient(to right, #7ebdff, #ffffff); }
+    .glass-panel { background: rgba(19,37,96,0.04); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(19,37,96,0.08); box-shadow: 0 4px 30px rgba(19,37,96,0.05); transition: all 0.3s ease; }
+    .dark .glass-panel { background: rgba(126,189,255,0.06); border: 1px solid rgba(126,189,255,0.12); box-shadow: 0 4px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(126,189,255,0.08); }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .dark .glow-btn { box-shadow: 0 0 20px rgba(126,189,255,0.3), 0 0 60px rgba(126,189,255,0.1); }
+    .lang-switch { position: relative; width: 68px; height: 32px; border-radius: 9999px; cursor: pointer; transition: all 0.3s ease; }
+    .lang-switch .lang-knob { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 9999px; transition: transform 0.35s cubic-bezier(0.45,0.05,0.55,0.95); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 10px; }
+    .lang-switch.ar .lang-knob { transform: translateX(36px); }
+    .legal-content h2 { font-size: 1.5rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .legal-content p { margin-bottom: 1rem; line-height: 1.8; }
+    .legal-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    [dir="rtl"] .legal-content ul { padding-left: 0; padding-right: 1.5rem; }
+    .legal-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+    [data-i18n] { transition: opacity 0.25s ease; }
+  </style>
+</head>
+<body class="antialiased font-sans bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-50 selection:bg-brand-navy selection:text-white">
+
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-light/20 blur-[100px] animate-blob dark:opacity-0"></div>
+    <div class="absolute bottom-[-10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/15 blur-[100px] animate-blob-delayed opacity-0 dark:opacity-100"></div>
+  </div>
+
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50">
+    <div class="glass-panel rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
+      <a href="index.html" class="h-16 w-auto relative flex items-center shrink-0"><img src="images/white-logo.png" alt="Mini Dental School" class="h-14 w-auto block dark:hidden" /><img src="images/dark-logo.png" alt="Mini Dental School" class="h-14 w-auto hidden dark:block" /></a>
+      <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+        <a href="courses.html" data-i18n="nav_courses" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Courses</a>
+        <a href="pricing.html" data-i18n="nav_pricing" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Pricing</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div id="lang-toggle" class="lang-switch glass-panel" title="Switch Language"><div class="lang-knob bg-brand-navy dark:bg-brand-light text-white dark:text-dark-bg"><span id="lang-knob-text">EN</span></div><div class="absolute inset-0 flex items-center justify-between px-2.5 text-[10px] font-bold pointer-events-none"><span class="text-brand-navy/40 dark:text-white/30">EN</span><span class="text-brand-navy/40 dark:text-white/30 font-arabic">ع</span></div></div>
+        <button id="theme-toggle" class="p-2 rounded-full glass-panel flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-brand-navy dark:text-brand-light"><span class="material-symbols-outlined text-[20px] hidden dark:block">light_mode</span><span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span></button>
+        <a href="register.html" data-i18n="nav_cta" class="glow-btn px-4 sm:px-5 py-2.5 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-sm tracking-tight hover:scale-105 transition-all duration-300">Enroll Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-40 pb-24 flex flex-col items-center">
+    <section class="w-full max-w-4xl px-6">
+      <div class="text-center mb-16">
+        <h1 class="font-display text-5xl md:text-7xl font-black tracking-tight mb-6 text-brand-navy dark:text-white">
+          <span data-i18n="terms_title_1">Terms of </span><span class="text-gradient" data-i18n="terms_title_2">Service</span>
+        </h1>
+        <p class="text-brand-navy/40 dark:text-slate-500 text-sm font-medium" data-i18n="last_updated">Last updated: March 2026</p>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 legal-content text-brand-navy/70 dark:text-slate-300 font-medium text-[0.95rem]">
+        <div id="content-en">
+          <p>Welcome to Mini Dental School. By accessing or using our platform, you agree to be bound by these Terms of Service. Please read them carefully.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">1. Acceptance of Terms</h2>
+          <p>By creating an account or using any part of our services, you acknowledge that you have read, understood, and agree to be bound by these terms. If you do not agree, you must not use the platform.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">2. Account Responsibilities</h2>
+          <ul>
+            <li>You must provide accurate and complete information during registration.</li>
+            <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+            <li>You must notify us immediately of any unauthorized access to your account.</li>
+            <li>One account per individual. Account sharing is strictly prohibited.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">3. Content & Intellectual Property</h2>
+          <p>All content on Mini Dental School — including videos, text, graphics, and course materials — is the exclusive property of Mini Dental School and is protected by copyright law. You may not:</p>
+          <ul>
+            <li>Download, copy, record, or distribute any course content.</li>
+            <li>Share your account access with others.</li>
+            <li>Use screen recording or similar tools on our content.</li>
+            <li>Reproduce any materials for commercial purposes.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">4. Payment & Subscriptions</h2>
+          <p>Paid plans are billed on a recurring basis. You may cancel at any time, but refunds are subject to our refund policy. We reserve the right to change pricing with 30 days' advance notice.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">5. Termination</h2>
+          <p>We reserve the right to suspend or terminate your account if you violate these terms, engage in fraudulent activity, or misuse the platform in any way.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">6. Limitation of Liability</h2>
+          <p>Mini Dental School provides educational content for informational purposes only. We are not liable for any decisions made based on our content. Our platform is provided "as is" without warranties of any kind.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">7. Changes to Terms</h2>
+          <p>We may update these terms from time to time. Continued use of the platform after changes constitutes acceptance of the new terms. We will notify you of significant changes via email.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">8. Contact</h2>
+          <p>For questions regarding these Terms, please contact us at <a href="mailto:support@minidentalschool.com" class="text-brand-light font-bold hover:underline">support@minidentalschool.com</a>.</p>
+        </div>
+
+        <div id="content-ar" class="hidden">
+          <p>مرحباً بك في Mini Dental School. بالوصول إلى منصتنا أو استخدامها، فإنك توافق على الالتزام بشروط الخدمة هذه. يرجى قراءتها بعناية.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">١. قبول الشروط</h2>
+          <p>بإنشاء حساب أو استخدام أي جزء من خدماتنا، فإنك تقر بأنك قد قرأت وفهمت ووافقت على الالتزام بهذه الشروط. إذا كنت لا توافق، يجب عليك عدم استخدام المنصة.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٢. مسؤوليات الحساب</h2>
+          <ul>
+            <li>يجب عليك تقديم معلومات دقيقة وكاملة أثناء التسجيل.</li>
+            <li>أنت مسؤول عن الحفاظ على سرية بيانات اعتماد حسابك.</li>
+            <li>يجب عليك إخطارنا فوراً بأي وصول غير مصرح به إلى حسابك.</li>
+            <li>حساب واحد لكل فرد. مشاركة الحساب ممنوعة تماماً.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٣. المحتوى والملكية الفكرية</h2>
+          <p>جميع المحتوى على Mini Dental School — بما في ذلك مقاطع الفيديو والنصوص والرسومات ومواد الدورة — هو ملكية حصرية لـ Mini Dental School ومحمي بموجب قانون حقوق النشر. لا يجوز لك:</p>
+          <ul>
+            <li>تنزيل أو نسخ أو تسجيل أو توزيع أي محتوى دورة.</li>
+            <li>مشاركة وصول حسابك مع الآخرين.</li>
+            <li>استخدام تسجيل الشاشة أو أدوات مماثلة على محتوانا.</li>
+            <li>إعادة إنتاج أي مواد لأغراض تجارية.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٤. الدفع والاشتراكات</h2>
+          <p>تتم فوترة الخطط المدفوعة على أساس متكرر. يمكنك الإلغاء في أي وقت، لكن استرداد الأموال يخضع لسياسة الاسترداد الخاصة بنا. نحتفظ بالحق في تغيير الأسعار مع إشعار مسبق بـ30 يوماً.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٥. الإنهاء</h2>
+          <p>نحتفظ بالحق في تعليق أو إنهاء حسابك إذا انتهكت هذه الشروط أو شاركت في نشاط احتيالي أو أسأت استخدام المنصة بأي شكل.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٦. تحديد المسؤولية</h2>
+          <p>يوفر Mini Dental School محتوى تعليمي لأغراض إعلامية فقط. لسنا مسؤولين عن أي قرارات يتم اتخاذها بناءً على محتوانا. يتم تقديم منصتنا "كما هي" دون ضمانات من أي نوع.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٧. التغييرات في الشروط</h2>
+          <p>قد نحدث هذه الشروط من وقت لآخر. يشكل الاستخدام المستمر للمنصة بعد التغييرات قبولاً للشروط الجديدة.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٨. التواصل</h2>
+          <p>للأسئلة المتعلقة بهذه الشروط، يرجى التواصل معنا عبر <a href="mailto:support@minidentalschool.com" class="text-brand-light font-bold hover:underline">support@minidentalschool.com</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 w-full border-t border-brand-navy/5 dark:border-white/5 bg-white/40 dark:bg-dark-card/60 backdrop-blur-xl pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2 flex flex-col items-start rtl:items-end"><a href="index.html" class="h-16 w-auto relative flex items-center justify-center mb-6"><img src="images/white-logo.png" alt="Mini Dental School" class="h-14 w-auto block dark:hidden" /><img src="images/dark-logo.png" alt="Mini Dental School" class="h-14 w-auto hidden dark:block" /></a><p data-i18n="footer_desc" class="text-brand-navy/60 dark:text-slate-400 max-w-sm font-medium text-sm leading-relaxed">A smarter, more effective way to learn dentistry.</p></div>
+      <div><h4 data-i18n="footer_platform" class="font-display font-bold text-brand-navy dark:text-white mb-4">Platform</h4><ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400"><li><a href="courses.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">All Courses</a></li><li><a href="pricing.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Pricing</a></li><li><a href="contact.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Contact Us</a></li></ul></div>
+      <div><h4 data-i18n="footer_legal" class="font-display font-bold text-brand-navy dark:text-white mb-4">Legal</h4><ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400"><li><a href="terms.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Terms of Service</a></li><li><a href="privacy.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 border-t border-brand-navy/10 dark:border-white/5 pt-8 text-center text-xs font-semibold text-brand-navy/50 dark:text-slate-500"><p data-i18n="footer_copy">&copy; 2026 Mini Dental School. All rights reserved.</p></div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: { nav_courses:"Courses",nav_pricing:"Pricing",nav_contact:"Contact",nav_cta:"Enroll Now",terms_title_1:"Terms of ",terms_title_2:"Service",last_updated:"Last updated: March 2026",footer_desc:"A smarter, more effective way to learn dentistry.",footer_platform:"Platform",footer_legal:"Legal",footer_copy:"© 2026 Mini Dental School. All rights reserved." },
+      ar: { nav_courses:"الدورات",nav_pricing:"الأسعار",nav_contact:"تواصل",nav_cta:"سجّل الآن",terms_title_1:"شروط ",terms_title_2:"الخدمة",last_updated:"آخر تحديث: مارس 2026",footer_desc:"طريقة أذكى وأكثر فعالية لتعلم طب الأسنان.",footer_platform:"المنصة",footer_legal:"قانوني",footer_copy:"© 2026 Mini Dental School. جميع الحقوق محفوظة." }
+    };
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+      document.getElementById('content-en').classList.toggle('hidden', lang === 'ar');
+      document.getElementById('content-ar').classList.toggle('hidden', lang !== 'ar');
+      document.title = lang === 'ar' ? 'شروط الخدمة | Mini Dental School' : 'Terms of Service | Mini Dental School';
+      document.getElementById('lang-knob-text').textContent = lang === 'ar' ? 'ع' : 'EN';
+      const ls = document.getElementById('lang-toggle'); lang === 'ar' ? ls.classList.add('ar') : ls.classList.remove('ar');
+      localStorage.setItem('lang', lang);
+    }
+    document.getElementById('theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });
+    document.getElementById('lang-toggle').addEventListener('click', function () { setLanguage((localStorage.getItem('lang') || 'en') === 'en' ? 'ar' : 'en'); });
+    setLanguage(localStorage.getItem('lang') || 'en');
+  </script>
+</body>
+</html>

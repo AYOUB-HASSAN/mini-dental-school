@@ -151,6 +151,178 @@
     [data-i18n] {
       transition: opacity 0.25s ease;
     }
+
+    /* ——— Hero Scroll Animation ——— */
+    .hero-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .hero-text-side {
+      flex: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: text-align 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  align-items 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  flex 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      min-width: 0;
+      will-change: transform;
+    }
+
+    .hero-inner.hero-scrolled .hero-text-side {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    [dir="rtl"] .hero-inner.hero-scrolled .hero-text-side {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    /* Individual element transitions — staggered cascade */
+    .hero-text-side h1 {
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 1s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(0) scale(1);
+      will-change: transform, opacity;
+    }
+    .hero-text-side p {
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+                  opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+      transform: translateY(0);
+      will-change: transform, opacity;
+    }
+    .hero-text-side .hero-buttons {
+      transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
+                  opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+                  margin-top 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+      transform: translateY(25px);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    /* Scrolled state — cascading entrance */
+    .hero-inner.hero-scrolled .hero-text-side h1 {
+      transform: translateY(-8px) scale(0.97);
+    }
+    .hero-inner.hero-scrolled .hero-text-side p {
+      transform: translateY(-4px);
+    }
+    .hero-inner.hero-scrolled .hero-text-side .hero-buttons {
+      transform: translateY(0);
+      opacity: 1;
+      margin-top: 1.5rem;
+    }
+
+    /* Video side — cinematic entrance */
+    .hero-video-side {
+      flex: 0;
+      width: 0;
+      opacity: 0;
+      transform: translateX(100px) scale(0.85);
+      transition: flex 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+                  width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+                  opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s,
+                  transform 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+                  margin 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+      overflow: hidden;
+      min-width: 0;
+      will-change: transform, opacity, flex, width;
+    }
+
+    [dir="rtl"] .hero-video-side {
+      transform: translateX(-100px) scale(0.85);
+    }
+
+    .hero-inner.hero-scrolled .hero-video-side {
+      flex: 1;
+      width: auto;
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      margin-left: 3rem;
+    }
+
+    [dir="rtl"] .hero-inner.hero-scrolled .hero-video-side {
+      transform: translateX(0) scale(1);
+      margin-left: 0;
+      margin-right: 3rem;
+    }
+
+    /* Video player styling */
+    .video-mockup {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      cursor: pointer;
+    }
+
+    .video-mockup .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .video-mockup .play-btn .play-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .video-mockup:hover .play-circle {
+      transform: scale(1.1);
+    }
+
+    .video-mockup .video-shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(19,37,96,0.15) 0%, rgba(126,189,255,0.08) 50%, rgba(19,37,96,0.12) 100%);
+    }
+    .dark .video-mockup .video-shimmer {
+      background: linear-gradient(135deg, rgba(126,189,255,0.08) 0%, rgba(19,37,96,0.15) 50%, rgba(126,189,255,0.05) 100%);
+    }
+
+    /* Responsive: stack on mobile */
+    @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column !important;
+      }
+      .hero-inner.hero-scrolled .hero-text-side {
+        text-align: center;
+      }
+      [dir="rtl"] .hero-inner.hero-scrolled .hero-text-side {
+        text-align: center;
+      }
+      .hero-inner.hero-scrolled .hero-video-side {
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+      }
+      [dir="rtl"] .hero-inner.hero-scrolled .hero-video-side {
+        margin-right: 0;
+      }
+    }
   </style>
 </head>
 
@@ -184,9 +356,9 @@
 
       <!-- Nav Links -->
       <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-        <a href="#features" data-i18n="nav_features" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Features</a>
-        <a href="#courses" data-i18n="nav_courses" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Courses</a>
-        <a href="#pricing" data-i18n="nav_pricing" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Pricing</a>
+        <a href="courses.html" data-i18n="nav_courses" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Courses</a>
+        <a href="pricing.html" data-i18n="nav_pricing" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Pricing</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Contact</a>
       </div>
 
       <!-- Controls: Lang + Theme + CTA -->
@@ -194,7 +366,7 @@
         <!-- Language Toggle Switch -->
         <div id="lang-toggle" class="lang-switch glass-panel" title="Switch Language">
           <div class="lang-knob bg-brand-navy dark:bg-brand-light text-white dark:text-dark-bg">
-            <span id="lang-knob-text">EN</span>
+            <span id="lang-knob-text" style="font-family:'Cairo',sans-serif;font-weight:800;">EN</span>
           </div>
           <div class="absolute inset-0 flex items-center justify-between px-2.5 text-[10px] font-bold pointer-events-none">
             <span class="text-brand-navy/40 dark:text-white/30">EN</span>
@@ -209,7 +381,7 @@
         </button>
 
         <!-- CTA -->
-        <a href="#join" data-i18n="nav_cta" class="glow-btn px-4 sm:px-5 py-2.5 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-sm tracking-tight hover:scale-105 transition-all duration-300">Enroll Now</a>
+        <a href="register.html" data-i18n="nav_cta" class="glow-btn px-4 sm:px-5 py-2.5 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-sm tracking-tight hover:scale-105 transition-all duration-300">Enroll Now</a>
       </div>
     </div>
   </nav>
@@ -220,23 +392,68 @@
   <main class="relative z-10 pt-32 pb-24 flex flex-col items-center">
 
     <!-- Hero Section -->
-    <section class="w-full max-w-7xl px-6 pt-20 pb-32 flex flex-col items-center text-center">
-      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-8 text-brand-navy dark:text-white">
-        <span data-i18n="hero_title_1">Master Dentistry</span> <br />
-        <span class="text-gradient" data-i18n="hero_title_2">The Smart Way.</span>
-      </h1>
+    <section id="hero" class="hero-wrapper w-full max-w-7xl px-6 pt-20 pb-32">
+      <div id="hero-inner" class="hero-inner">
 
-      <p class="text-lg md:text-xl text-brand-navy/60 dark:text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium" data-i18n="hero_desc" data-i18n-html="true">
-        <b class="text-brand-navy dark:text-white">Mini Dental School</b> is an online learning platform designed to simplify dentistry for students through structured, high-quality educational content.
-      </p>
+        <!-- TEXT SIDE -->
+        <div class="hero-text-side">
+          <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-8 text-brand-navy dark:text-white">
+            <span data-i18n="hero_title_1">Master Dentistry</span> <br />
+            <span class="text-gradient" data-i18n="hero_title_2">The Smart Way.</span>
+          </h1>
 
-      <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-        <a href="#courses" data-i18n="hero_cta_1" class="glow-btn px-8 py-4 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-          Explore Courses
-        </a>
-        <a href="#features" class="px-8 py-4 rounded-full glass-panel text-brand-navy font-bold text-lg dark:text-white hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-          <span data-i18n="hero_cta_2">Learn More</span> <span class="material-symbols-outlined text-sm">arrow_downward</span>
-        </a>
+          <p class="text-lg md:text-xl text-brand-navy/60 dark:text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium" data-i18n="hero_desc" data-i18n-html="true">
+            <b class="text-brand-navy dark:text-white">Mini Dental School</b> is an online learning platform designed to simplify dentistry for students through structured, high-quality educational content.
+          </p>
+
+          <div class="hero-buttons flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+            <a href="courses.html" data-i18n="hero_cta_1" class="glow-btn px-8 py-4 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+              Explore Courses
+            </a>
+            <a href="#features" class="px-8 py-4 rounded-full glass-panel text-brand-navy font-bold text-lg dark:text-white hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+              <span data-i18n="hero_cta_2">Learn More</span><span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_downward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- VIDEO SIDE -->
+        <div class="hero-video-side">
+          <div class="video-mockup glass-panel">
+            <div class="video-shimmer"></div>
+            <!-- Decorative video thumbnail content -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
+              <div class="w-full h-full rounded-xl bg-brand-navy/5 dark:bg-brand-light/5 flex items-center justify-center relative overflow-hidden">
+                <!-- Animated decorative lines to simulate video content -->
+                <div class="absolute inset-0">
+                  <div class="absolute top-[15%] left-[8%] right-[8%] h-3 rounded-full bg-brand-navy/8 dark:bg-brand-light/10"></div>
+                  <div class="absolute top-[28%] left-[8%] w-[60%] h-3 rounded-full bg-brand-navy/6 dark:bg-brand-light/8"></div>
+                  <div class="absolute top-[42%] left-[8%] right-[15%] h-32 rounded-2xl bg-brand-navy/4 dark:bg-brand-light/5 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-brand-navy/15 dark:text-brand-light/15">dentistry</span>
+                  </div>
+                  <div class="absolute bottom-[18%] left-[8%] right-[8%] h-3 rounded-full bg-brand-navy/6 dark:bg-brand-light/8"></div>
+                  <div class="absolute bottom-[8%] left-[8%] w-[45%] h-3 rounded-full bg-brand-navy/4 dark:bg-brand-light/6"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Play Button Overlay -->
+            <div class="play-btn">
+              <div class="play-circle bg-brand-navy/90 dark:bg-brand-light/90 shadow-2xl">
+                <span class="material-symbols-outlined text-3xl text-white dark:text-dark-bg">play_arrow</span>
+              </div>
+            </div>
+            <!-- Bottom bar -->
+            <div class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-brand-navy/10 dark:from-black/30 to-transparent flex items-end px-4 pb-2">
+              <div class="flex items-center gap-2 w-full">
+                <div class="w-3 h-3 rounded-full bg-brand-light/60 dark:bg-brand-light/40"></div>
+                <div class="flex-1 h-1 rounded-full bg-brand-navy/10 dark:bg-white/10 relative overflow-hidden">
+                  <div class="absolute left-0 top-0 h-full w-[35%] rounded-full bg-brand-light dark:bg-brand-light/60"></div>
+                </div>
+                <span class="text-[10px] font-bold text-brand-navy/30 dark:text-white/30" data-i18n="hero_video_time">12:34</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -296,7 +513,7 @@
               </p>
             </div>
             <div class="flex items-center gap-2 text-teal-600 dark:text-teal-400 text-sm font-bold">
-              <span class="material-symbols-outlined text-sm">verified_user</span>
+              <span class="material-symbols-outlined text-sm" aria-hidden="true">verified_user</span>
               <span data-i18n="feat3_badge">Bank-level Encryption</span>
             </div>
           </div>
@@ -326,9 +543,9 @@
           </h2>
           <p data-i18n="courses_subtitle" class="text-brand-navy/60 dark:text-slate-400 font-medium">Essential subjects broken down for rapid mastery.</p>
         </div>
-        <a href="#" class="group flex items-center gap-2 text-brand-navy font-bold hover:text-brand-light dark:text-brand-light dark:hover:text-white transition-colors">
+        <a href="courses.html" class="group flex items-center gap-2 text-brand-navy font-bold hover:text-brand-light dark:text-brand-light dark:hover:text-white transition-colors">
           <span data-i18n="courses_viewall">View Entire Catalog</span>
-          <span class="material-symbols-outlined text-sm group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">arrow_forward</span>
+          <span class="material-symbols-outlined text-sm group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" aria-hidden="true">arrow_forward</span>
         </a>
       </div>
 
@@ -343,7 +560,7 @@
           <div class="p-6">
             <h3 data-i18n="course1_title" class="font-display text-xl font-bold text-brand-navy dark:text-white mb-2">Oral Anatomy Mastery</h3>
             <p data-i18n="course1_desc" class="text-brand-navy/60 dark:text-slate-400 text-sm mb-6 line-clamp-2 font-medium">Master the external and internal morphology of teeth. Crucial foundations for clinical success.</p>
-            <button data-i18n="course_btn" class="w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</button>
+            <a href="courses.html" data-i18n="course_btn" class="block text-center w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</a>
           </div>
         </div>
 
@@ -356,7 +573,7 @@
           <div class="p-6">
             <h3 data-i18n="course2_title" class="font-display text-xl font-bold text-brand-navy dark:text-white mb-2">Dental Histology</h3>
             <p data-i18n="course2_desc" class="text-brand-navy/60 dark:text-slate-400 text-sm mb-6 line-clamp-2 font-medium">Understand the microscopic structures that define dental development and health.</p>
-            <button data-i18n="course_btn" class="w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</button>
+            <a href="courses.html" data-i18n="course_btn" class="block text-center w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</a>
           </div>
         </div>
 
@@ -369,7 +586,7 @@
           <div class="p-6">
             <h3 data-i18n="course3_title" class="font-display text-xl font-bold text-brand-navy dark:text-white mb-2">Oral Pathology</h3>
             <p data-i18n="course3_desc" class="text-brand-navy/60 dark:text-slate-400 text-sm mb-6 line-clamp-2 font-medium">Identify and understand the mechanisms of common and rare oral diseases efficiently.</p>
-            <button data-i18n="course_btn" class="w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</button>
+            <a href="courses.html" data-i18n="course_btn" class="block text-center w-full py-3 rounded-xl glass-panel text-brand-navy dark:text-white font-bold group-hover:bg-brand-navy group-hover:text-white dark:group-hover:bg-brand-light dark:group-hover:text-dark-bg transition-all">Start Path</a>
           </div>
         </div>
       </div>
@@ -387,12 +604,12 @@
           Join hundreds of dental students learning the smart way. Take control of your exams and clinical confidence.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <button data-i18n="cta_btn1" class="glow-btn px-8 py-4 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <a href="register.html" data-i18n="cta_btn1" class="glow-btn px-8 py-4 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             Create Free Account
-          </button>
-          <button data-i18n="cta_btn2" class="px-8 py-4 rounded-full glass-panel text-brand-navy dark:text-white font-bold text-lg hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors">
+          </a>
+          <a href="pricing.html" data-i18n="cta_btn2" class="px-8 py-4 rounded-full glass-panel text-brand-navy dark:text-white font-bold text-lg hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors">
             View Pricing
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -416,17 +633,17 @@
       <div>
         <h4 data-i18n="footer_platform" class="font-display font-bold text-brand-navy dark:text-white mb-4">Platform</h4>
         <ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400">
-          <li><a href="#" data-i18n="footer_courses" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">All Courses</a></li>
-          <li><a href="#" data-i18n="footer_pricing" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Pricing</a></li>
-          <li><a href="#" data-i18n="footer_guides" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Study Guides</a></li>
+          <li><a href="courses.html" data-i18n="footer_courses" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">All Courses</a></li>
+          <li><a href="pricing.html" data-i18n="footer_pricing" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Pricing</a></li>
+          <li><a href="contact.html" data-i18n="footer_contact" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Contact Us</a></li>
         </ul>
       </div>
       <div>
         <h4 data-i18n="footer_legal" class="font-display font-bold text-brand-navy dark:text-white mb-4">Legal</h4>
         <ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400">
-          <li><a href="#" data-i18n="footer_terms" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Terms of Service</a></li>
-          <li><a href="#" data-i18n="footer_privacy" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Privacy Policy</a></li>
-          <li><a href="#" data-i18n="footer_support" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Contact Support</a></li>
+          <li><a href="terms.html" data-i18n="footer_terms" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Terms of Service</a></li>
+          <li><a href="privacy.html" data-i18n="footer_privacy" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Privacy Policy</a></li>
+          <li><a href="contact.html" data-i18n="footer_support" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Contact Support</a></li>
         </ul>
       </div>
     </div>
@@ -451,12 +668,15 @@
         nav_courses: "Courses",
         nav_pricing: "Pricing",
         nav_cta: "Enroll Now",
+        nav_contact: "Contact",
+        footer_contact: "Contact Us",
         hero_badge: "Simplify Dentistry",
         hero_title_1: "Master Dentistry",
         hero_title_2: "The Smart Way.",
         hero_desc: '<b class="text-brand-navy dark:text-white">Mini Dental School</b> is an online learning platform designed to simplify dentistry for students through structured, high-quality educational content.',
         hero_cta_1: "Explore Courses",
         hero_cta_2: "Learn More",
+        hero_video_time: "12:34",
         features_title_1: "Built for",
         features_title_2: "Understanding",
         features_desc: "The platform focuses on delivering clear, concise, and exam-oriented video lessons that help students understand complex dental topics without confusion or unnecessary detail.",
@@ -503,12 +723,15 @@
         nav_courses: "الدورات",
         nav_pricing: "الأسعار",
         nav_cta: "سجّل الآن",
+        nav_contact: "تواصل",
+        footer_contact: "تواصل معنا",
         hero_badge: "طب الأسنان ببساطة",
         hero_title_1: "أتقن طب الأسنان",
         hero_title_2: "بالطريقة الذكية.",
         hero_desc: '<b class="text-brand-navy dark:text-white">Mini Dental School</b> هي منصة تعليمية إلكترونية مصممة لتبسيط طب الأسنان للطلاب من خلال محتوى تعليمي منظّم وعالي الجودة.',
         hero_cta_1: "استكشف الدورات",
         hero_cta_2: "اعرف المزيد",
+        hero_video_time: "١٢:٣٤",
         features_title_1: "مصممة من أجل",
         features_title_2: "الفهم العميق",
         features_desc: "تركز المنصة على تقديم دروس فيديو واضحة ومختصرة وموجهة للامتحانات تساعد الطلاب على فهم موضوعات طب الأسنان المعقدة دون ارتباك أو تفاصيل غير ضرورية.",
@@ -557,14 +780,18 @@
       const t = translations[lang];
       if (!t) return;
 
-      // Update all data-i18n elements
+      // Update all data-i18n elements — skip if element has HTML child elements (protects icons)
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) {
           if (el.getAttribute('data-i18n-html') === 'true') {
             el.innerHTML = t[key];
           } else {
-            el.textContent = t[key];
+            // Only use textContent if the element has NO child elements (text-only node)
+            const hasChildElements = el.querySelector('*') !== null;
+            if (!hasChildElements) {
+              el.textContent = t[key];
+            }
           }
         }
       });
@@ -619,6 +846,31 @@
     // ——— INIT LANGUAGE ON LOAD ———
     const savedLang = localStorage.getItem('lang') || 'en';
     setLanguage(savedLang);
+
+    // ——— HERO SCROLL ANIMATION ———
+    (function () {
+      const heroInner = document.getElementById('hero-inner');
+      if (!heroInner) return;
+
+      let ticking = false;
+
+      function checkScroll() {
+        // Only trigger after user scrolls down at least 150px
+        if (window.scrollY > 150) {
+          heroInner.classList.add('hero-scrolled');
+        } else {
+          heroInner.classList.remove('hero-scrolled');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(checkScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 

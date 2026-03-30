@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Mini Dental School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    if (localStorage.getItem('lang') === 'ar') { document.documentElement.setAttribute('lang', 'ar'); document.documentElement.setAttribute('dir', 'rtl'); }
+    tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'], arabic: ['Cairo','sans-serif'] }, colors: { brand: { navy: '#132560', light: '#7ebdff' }, dark: { bg: '#060d1f', card: '#0c1631', surface: '#111d3a' } }, animation: { 'blob': 'blob 10s infinite', 'blob-delayed': 'blob 10s infinite 5s' }, keyframes: { blob: { '0%,100%': { transform: 'translate(0,0) scale(1)' }, '33%': { transform: 'translate(30px,-50px) scale(1.1)' }, '66%': { transform: 'translate(-20px,20px) scale(0.9)' } } } } } }
+  </script>
+  <style>
+    body { transition: background-color 0.5s ease, color 0.5s ease; overflow-x: hidden; }
+    [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] p, [dir="rtl"] a, [dir="rtl"] button, [dir="rtl"] span, [dir="rtl"] li { font-family: 'Cairo', sans-serif !important; }
+    .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #132560, #3b82f6); }
+    .dark .text-gradient { background-image: linear-gradient(to right, #7ebdff, #ffffff); }
+    .glass-panel { background: rgba(19,37,96,0.04); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(19,37,96,0.08); box-shadow: 0 4px 30px rgba(19,37,96,0.05); transition: all 0.3s ease; }
+    .dark .glass-panel { background: rgba(126,189,255,0.06); border: 1px solid rgba(126,189,255,0.12); box-shadow: 0 4px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(126,189,255,0.08); }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .dark .glow-btn { box-shadow: 0 0 20px rgba(126,189,255,0.3), 0 0 60px rgba(126,189,255,0.1); }
+    .lang-switch { position: relative; width: 68px; height: 32px; border-radius: 9999px; cursor: pointer; transition: all 0.3s ease; }
+    .lang-switch .lang-knob { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 9999px; transition: transform 0.35s cubic-bezier(0.45,0.05,0.55,0.95); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 10px; }
+    .lang-switch.ar .lang-knob { transform: translateX(36px); }
+    .legal-content h2 { font-size: 1.5rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .legal-content p { margin-bottom: 1rem; line-height: 1.8; }
+    .legal-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    [dir="rtl"] .legal-content ul { padding-left: 0; padding-right: 1.5rem; }
+    .legal-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+    [data-i18n] { transition: opacity 0.25s ease; }
+  </style>
+</head>
+<body class="antialiased font-sans bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-50 selection:bg-brand-navy selection:text-white">
+
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-light/20 blur-[100px] animate-blob dark:opacity-0"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/15 blur-[100px] animate-blob-delayed opacity-0 dark:opacity-100"></div>
+  </div>
+
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50">
+    <div class="glass-panel rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
+      <a href="index.html" class="h-16 w-auto relative flex items-center shrink-0"><img src="images/white-logo.png" alt="Mini Dental School" class="h-14 w-auto block dark:hidden" /><img src="images/dark-logo.png" alt="Mini Dental School" class="h-14 w-auto hidden dark:block" /></a>
+      <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+        <a href="courses.html" data-i18n="nav_courses" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Courses</a>
+        <a href="pricing.html" data-i18n="nav_pricing" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Pricing</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-sm font-semibold text-brand-navy/70 hover:text-brand-navy dark:text-slate-300 dark:hover:text-white transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div id="lang-toggle" class="lang-switch glass-panel" title="Switch Language"><div class="lang-knob bg-brand-navy dark:bg-brand-light text-white dark:text-dark-bg"><span id="lang-knob-text">EN</span></div><div class="absolute inset-0 flex items-center justify-between px-2.5 text-[10px] font-bold pointer-events-none"><span class="text-brand-navy/40 dark:text-white/30">EN</span><span class="text-brand-navy/40 dark:text-white/30 font-arabic">ع</span></div></div>
+        <button id="theme-toggle" class="p-2 rounded-full glass-panel flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-brand-navy dark:text-brand-light"><span class="material-symbols-outlined text-[20px] hidden dark:block">light_mode</span><span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span></button>
+        <a href="register.html" data-i18n="nav_cta" class="glow-btn px-4 sm:px-5 py-2.5 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-sm tracking-tight hover:scale-105 transition-all duration-300">Enroll Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-40 pb-24 flex flex-col items-center">
+    <section class="w-full max-w-4xl px-6">
+      <div class="text-center mb-16">
+        <h1 class="font-display text-5xl md:text-7xl font-black tracking-tight mb-6 text-brand-navy dark:text-white">
+          <span data-i18n="privacy_title_1">Privacy </span><span class="text-gradient" data-i18n="privacy_title_2">Policy</span>
+        </h1>
+        <p class="text-brand-navy/40 dark:text-slate-500 text-sm font-medium" data-i18n="last_updated">Last updated: March 2026</p>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 legal-content text-brand-navy/70 dark:text-slate-300 font-medium text-[0.95rem]" id="legal-body">
+        <div id="content-en">
+          <p>At Mini Dental School, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">1. Information We Collect</h2>
+          <p>We may collect the following types of information:</p>
+          <ul>
+            <li><strong>Personal Data:</strong> Name, email address, and university affiliation provided during registration.</li>
+            <li><strong>Usage Data:</strong> Pages visited, courses accessed, time spent on the platform, and browser information.</li>
+            <li><strong>Payment Data:</strong> Processed securely through third-party providers. We never store your full credit card details.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">2. How We Use Your Information</h2>
+          <p>We use the information we collect to:</p>
+          <ul>
+            <li>Provide, maintain, and improve our educational services.</li>
+            <li>Personalize your learning experience and recommend relevant courses.</li>
+            <li>Send important updates, billing information, and promotional content (with your consent).</li>
+            <li>Monitor and analyze usage patterns to enhance platform performance.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">3. Data Security</h2>
+          <p>We implement industry-standard security measures including SSL encryption, secure authentication, and regular security audits to protect your personal information. However, no method of electronic transmission is 100% secure.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">4. Cookies</h2>
+          <p>We use cookies and similar tracking technologies to improve your experience. You can control cookie preferences through your browser settings. Essential cookies are required for the platform to function properly.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">5. Your Rights</h2>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Access, update, or delete your personal information at any time.</li>
+            <li>Opt out of promotional communications.</li>
+            <li>Request a copy of the data we hold about you.</li>
+            <li>Withdraw consent where applicable.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">6. Contact Us</h2>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@minidentalschool.com" class="text-brand-light font-bold hover:underline">support@minidentalschool.com</a> or visit our <a href="contact.html" class="text-brand-light font-bold hover:underline">Contact page</a>.</p>
+        </div>
+
+        <div id="content-ar" class="hidden">
+          <p>في Mini Dental School، نأخذ خصوصيتك على محمل الجد. توضح سياسة الخصوصية هذه كيف نجمع ونستخدم ونفصح عن معلوماتك ونحميها عند استخدامك لمنصتنا.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">١. المعلومات التي نجمعها</h2>
+          <p>قد نجمع الأنواع التالية من المعلومات:</p>
+          <ul>
+            <li><strong>البيانات الشخصية:</strong> الاسم والبريد الإلكتروني والانتماء الجامعي المُقدَّم أثناء التسجيل.</li>
+            <li><strong>بيانات الاستخدام:</strong> الصفحات المزارة والدورات التي تم الوصول إليها والوقت المستغرق على المنصة ومعلومات المتصفح.</li>
+            <li><strong>بيانات الدفع:</strong> تتم معالجتها بشكل آمن عبر مزودي خدمات خارجيين. لا نقوم أبداً بتخزين تفاصيل بطاقتك الائتمانية الكاملة.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٢. كيف نستخدم معلوماتك</h2>
+          <p>نستخدم المعلومات التي نجمعها من أجل:</p>
+          <ul>
+            <li>تقديم خدماتنا التعليمية وصيانتها وتحسينها.</li>
+            <li>تخصيص تجربتك التعليمية والتوصية بالدورات ذات الصلة.</li>
+            <li>إرسال التحديثات المهمة ومعلومات الفوترة والمحتوى الترويجي (بموافقتك).</li>
+            <li>مراقبة وتحليل أنماط الاستخدام لتعزيز أداء المنصة.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٣. أمان البيانات</h2>
+          <p>ننفذ إجراءات أمنية بمعايير الصناعة بما في ذلك تشفير SSL والمصادقة الآمنة والتدقيق الأمني المنتظم لحماية معلوماتك الشخصية. ومع ذلك، لا توجد طريقة نقل إلكتروني آمنة بنسبة 100%.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٤. ملفات تعريف الارتباط</h2>
+          <p>نستخدم ملفات تعريف الارتباط وتقنيات التتبع المماثلة لتحسين تجربتك. يمكنك التحكم في تفضيلات ملفات تعريف الارتباط من خلال إعدادات متصفحك.</p>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٥. حقوقك</h2>
+          <p>لديك الحق في:</p>
+          <ul>
+            <li>الوصول إلى معلوماتك الشخصية أو تحديثها أو حذفها في أي وقت.</li>
+            <li>إلغاء الاشتراك في الاتصالات الترويجية.</li>
+            <li>طلب نسخة من البيانات التي نحتفظ بها عنك.</li>
+            <li>سحب الموافقة حيثما ينطبق ذلك.</li>
+          </ul>
+
+          <h2 class="font-display text-brand-navy dark:text-white">٦. اتصل بنا</h2>
+          <p>إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا عبر <a href="mailto:support@minidentalschool.com" class="text-brand-light font-bold hover:underline">support@minidentalschool.com</a> أو زيارة <a href="contact.html" class="text-brand-light font-bold hover:underline">صفحة التواصل</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 w-full border-t border-brand-navy/5 dark:border-white/5 bg-white/40 dark:bg-dark-card/60 backdrop-blur-xl pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2 flex flex-col items-start rtl:items-end"><a href="index.html" class="h-16 w-auto relative flex items-center justify-center mb-6"><img src="images/white-logo.png" alt="Mini Dental School" class="h-14 w-auto block dark:hidden" /><img src="images/dark-logo.png" alt="Mini Dental School" class="h-14 w-auto hidden dark:block" /></a><p data-i18n="footer_desc" class="text-brand-navy/60 dark:text-slate-400 max-w-sm font-medium text-sm leading-relaxed">A smarter, more effective way to learn dentistry.</p></div>
+      <div><h4 data-i18n="footer_platform" class="font-display font-bold text-brand-navy dark:text-white mb-4">Platform</h4><ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400"><li><a href="courses.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">All Courses</a></li><li><a href="pricing.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Pricing</a></li><li><a href="contact.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Contact Us</a></li></ul></div>
+      <div><h4 data-i18n="footer_legal" class="font-display font-bold text-brand-navy dark:text-white mb-4">Legal</h4><ul class="space-y-3 text-sm font-medium text-brand-navy/60 dark:text-slate-400"><li><a href="terms.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Terms of Service</a></li><li><a href="privacy.html" class="hover:text-brand-navy dark:hover:text-brand-light transition-colors">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 border-t border-brand-navy/10 dark:border-white/5 pt-8 text-center text-xs font-semibold text-brand-navy/50 dark:text-slate-500"><p data-i18n="footer_copy">&copy; 2026 Mini Dental School. All rights reserved.</p></div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: { nav_courses:"Courses",nav_pricing:"Pricing",nav_contact:"Contact",nav_cta:"Enroll Now",privacy_title_1:"Privacy ",privacy_title_2:"Policy",last_updated:"Last updated: March 2026",footer_desc:"A smarter, more effective way to learn dentistry.",footer_platform:"Platform",footer_legal:"Legal",footer_copy:"© 2026 Mini Dental School. All rights reserved." },
+      ar: { nav_courses:"الدورات",nav_pricing:"الأسعار",nav_contact:"تواصل",nav_cta:"سجّل الآن",privacy_title_1:"سياسة ",privacy_title_2:"الخصوصية",last_updated:"آخر تحديث: مارس 2026",footer_desc:"طريقة أذكى وأكثر فعالية لتعلم طب الأسنان.",footer_platform:"المنصة",footer_legal:"قانوني",footer_copy:"© 2026 Mini Dental School. جميع الحقوق محفوظة." }
+    };
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+      document.getElementById('content-en').classList.toggle('hidden', lang === 'ar');
+      document.getElementById('content-ar').classList.toggle('hidden', lang !== 'ar');
+      document.title = lang === 'ar' ? 'سياسة الخصوصية | Mini Dental School' : 'Privacy Policy | Mini Dental School';
+      document.getElementById('lang-knob-text').textContent = lang === 'ar' ? 'ع' : 'EN';
+      const ls = document.getElementById('lang-toggle'); lang === 'ar' ? ls.classList.add('ar') : ls.classList.remove('ar');
+      localStorage.setItem('lang', lang);
+    }
+    document.getElementById('theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });
+    document.getElementById('lang-toggle').addEventListener('click', function () { setLanguage((localStorage.getItem('lang') || 'en') === 'en' ? 'ar' : 'en'); });
+    setLanguage(localStorage.getItem('lang') || 'en');
+  </script>
+</body>
+</html>

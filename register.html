@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Mini Dental School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    if (localStorage.getItem('lang') === 'ar') { document.documentElement.setAttribute('lang', 'ar'); document.documentElement.setAttribute('dir', 'rtl'); }
+    tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'], arabic: ['Cairo','sans-serif'] }, colors: { brand: { navy: '#132560', light: '#7ebdff' }, dark: { bg: '#060d1f', card: '#0c1631' } }, animation: { 'blob': 'blob 10s infinite', 'blob-delayed': 'blob 10s infinite 5s' }, keyframes: { blob: { '0%,100%': { transform: 'translate(0,0) scale(1)' }, '33%': { transform: 'translate(30px,-50px) scale(1.1)' }, '66%': { transform: 'translate(-20px,20px) scale(0.9)' } } } } } }
+  </script>
+  <style>
+    body { transition: background-color 0.5s ease, color 0.5s ease; overflow-x: hidden; }
+    [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] p, [dir="rtl"] a, [dir="rtl"] button, [dir="rtl"] span, [dir="rtl"] li, [dir="rtl"] label, [dir="rtl"] input { font-family: 'Cairo', sans-serif !important; }
+    .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #132560, #3b82f6); }
+    .dark .text-gradient { background-image: linear-gradient(to right, #7ebdff, #ffffff); }
+    .glass-panel { background: rgba(19,37,96,0.04); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(19,37,96,0.08); box-shadow: 0 4px 30px rgba(19,37,96,0.05); transition: all 0.3s ease; }
+    .dark .glass-panel { background: rgba(126,189,255,0.06); border: 1px solid rgba(126,189,255,0.12); box-shadow: 0 4px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(126,189,255,0.08); }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .dark .glow-btn { box-shadow: 0 0 20px rgba(126,189,255,0.3), 0 0 60px rgba(126,189,255,0.1); }
+    .form-input { background: rgba(19,37,96,0.03); border: 1px solid rgba(19,37,96,0.1); border-radius: 1rem; padding: 0.875rem 1.25rem; width: 100%; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; outline: none; color: inherit; }
+    .form-input:focus { border-color: #7ebdff; box-shadow: 0 0 0 3px rgba(126,189,255,0.15); }
+    .dark .form-input { background: rgba(126,189,255,0.05); border-color: rgba(126,189,255,0.15); color: #fff; }
+    .dark .form-input::placeholder { color: rgba(148,163,184,0.6); }
+    .lang-switch { position: relative; width: 68px; height: 32px; border-radius: 9999px; cursor: pointer; transition: all 0.3s ease; }
+    .lang-switch .lang-knob { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 9999px; transition: transform 0.35s cubic-bezier(0.45,0.05,0.55,0.95); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 10px; }
+    .lang-switch.ar .lang-knob { transform: translateX(36px); }
+    [data-i18n] { transition: opacity 0.25s ease; }
+  </style>
+</head>
+<body class="antialiased font-sans bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-50 min-h-screen flex flex-col">
+
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-light/20 blur-[100px] animate-blob dark:opacity-0"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-[35vw] h-[35vw] rounded-full bg-blue-300/30 blur-[100px] animate-blob-delayed dark:opacity-0"></div>
+    <div class="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] rounded-full bg-brand-light/8 blur-[120px] animate-blob opacity-0 dark:opacity-100"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-[35vw] h-[35vw] rounded-full bg-indigo-500/15 blur-[100px] animate-blob-delayed opacity-0 dark:opacity-100"></div>
+  </div>
+
+  <div class="relative z-10 w-full flex items-center justify-between px-6 sm:px-10 py-6">
+    <a href="index.html" class="h-16 w-auto flex items-center">
+      <img src="images/white-logo.png" alt="Mini Dental School" class="h-12 w-auto block dark:hidden" />
+      <img src="images/dark-logo.png" alt="Mini Dental School" class="h-12 w-auto hidden dark:block" />
+    </a>
+    <div class="flex items-center gap-3">
+      <div id="lang-toggle" class="lang-switch glass-panel" title="Switch Language">
+        <div class="lang-knob bg-brand-navy dark:bg-brand-light text-white dark:text-dark-bg"><span id="lang-knob-text">EN</span></div>
+        <div class="absolute inset-0 flex items-center justify-between px-2.5 text-[10px] font-bold pointer-events-none"><span class="text-brand-navy/40 dark:text-white/30">EN</span><span class="text-brand-navy/40 dark:text-white/30">ع</span></div>
+      </div>
+      <button id="theme-toggle" class="p-2 rounded-full glass-panel flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-brand-navy dark:text-brand-light">
+        <span class="material-symbols-outlined text-[20px] hidden dark:block">light_mode</span>
+        <span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main class="relative z-10 flex-1 flex items-center justify-center px-6 pb-20">
+    <div class="glass-panel rounded-3xl p-8 sm:p-12 w-full max-w-md">
+      <div class="text-center mb-8">
+        <h1 class="font-display text-3xl font-black text-brand-navy dark:text-white mb-2" data-i18n="reg_title">Create Account</h1>
+        <p class="text-brand-navy/50 dark:text-slate-400 text-sm font-medium" data-i18n="reg_desc">Start your journey to mastering dentistry</p>
+      </div>
+
+      <form class="space-y-5" onsubmit="event.preventDefault()">
+        <div>
+          <label class="block text-xs font-bold text-brand-navy/60 dark:text-slate-400 mb-2 uppercase tracking-wider" data-i18n="label_name">Full Name</label>
+          <input type="text" class="form-input" placeholder="John Doe" required />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy/60 dark:text-slate-400 mb-2 uppercase tracking-wider" data-i18n="label_email">Email Address</label>
+          <input type="email" class="form-input" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy/60 dark:text-slate-400 mb-2 uppercase tracking-wider" data-i18n="label_password">Password</label>
+          <input type="password" class="form-input" placeholder="Min. 8 characters" required minlength="8" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy/60 dark:text-slate-400 mb-2 uppercase tracking-wider" data-i18n="label_confirm">Confirm Password</label>
+          <input type="password" class="form-input" placeholder="••••••••" required />
+        </div>
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 mt-0.5 rounded border-brand-navy/20 dark:border-white/20 accent-brand-light" required />
+          <span class="text-xs font-medium text-brand-navy/50 dark:text-slate-400 leading-relaxed">
+            <span data-i18n="agree_text">I agree to the</span> <a href="terms.html" class="text-brand-light font-bold hover:underline" data-i18n="link_terms">Terms of Service</a> <span data-i18n="and_text">and</span> <a href="privacy.html" class="text-brand-light font-bold hover:underline" data-i18n="link_privacy">Privacy Policy</a>
+          </span>
+        </label>
+        <button type="submit" class="glow-btn w-full py-3.5 rounded-2xl bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-base hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300" data-i18n="btn_register">Create Account</button>
+      </form>
+
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-brand-navy/10 dark:border-white/10"></div></div>
+        <div class="relative flex justify-center"><span class="bg-slate-50 dark:bg-dark-card px-4 text-xs font-bold text-brand-navy/40 dark:text-slate-500 uppercase" data-i18n="or_continue">or continue with</span></div>
+      </div>
+
+      <button class="w-full py-3 rounded-2xl glass-panel text-brand-navy dark:text-white font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-all">
+        <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span data-i18n="btn_google">Continue with Google</span>
+      </button>
+
+      <p class="text-center mt-8 text-sm font-medium text-brand-navy/50 dark:text-slate-400">
+        <span data-i18n="have_account">Already have an account?</span>
+        <a href="login.html" class="text-brand-light font-bold hover:underline ms-1" data-i18n="link_login">Sign in</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        reg_title:"Create Account",reg_desc:"Start your journey to mastering dentistry",
+        label_name:"Full Name",label_email:"Email Address",label_password:"Password",label_confirm:"Confirm Password",
+        agree_text:"I agree to the",link_terms:"Terms of Service",and_text:"and",link_privacy:"Privacy Policy",
+        btn_register:"Create Account",or_continue:"or continue with",btn_google:"Continue with Google",
+        have_account:"Already have an account?",link_login:"Sign in"
+      },
+      ar: {
+        reg_title:"إنشاء حساب",reg_desc:"ابدأ رحلتك في إتقان طب الأسنان",
+        label_name:"الاسم الكامل",label_email:"البريد الإلكتروني",label_password:"كلمة المرور",label_confirm:"تأكيد كلمة المرور",
+        agree_text:"أوافق على",link_terms:"شروط الخدمة",and_text:"و",link_privacy:"سياسة الخصوصية",
+        btn_register:"إنشاء حساب",or_continue:"أو تابع باستخدام",btn_google:"المتابعة مع جوجل",
+        have_account:"لديك حساب بالفعل؟",link_login:"تسجيل الدخول"
+      }
+    };
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+      document.title = lang === 'ar' ? 'إنشاء حساب | Mini Dental School' : 'Register | Mini Dental School';
+      document.getElementById('lang-knob-text').textContent = lang === 'ar' ? 'ع' : 'EN';
+      const ls = document.getElementById('lang-toggle'); lang === 'ar' ? ls.classList.add('ar') : ls.classList.remove('ar');
+      localStorage.setItem('lang', lang);
+    }
+    document.getElementById('theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });
+    document.getElementById('lang-toggle').addEventListener('click', function () { setLanguage((localStorage.getItem('lang') || 'en') === 'en' ? 'ar' : 'en'); });
+    setLanguage(localStorage.getItem('lang') || 'en');
+  </script>
+</body>
+</html>

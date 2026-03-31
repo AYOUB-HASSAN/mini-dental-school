@@ -380,8 +380,21 @@
           <span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span>
         </button>
 
+        <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-full glass-panel flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-brand-navy dark:text-brand-light" aria-label="Toggle Navigation Menu" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="material-symbols-outlined text-[20px]">menu</span>
+        </button>
+
         <!-- CTA -->
         <a href="register.html" data-i18n="nav_cta" class="glow-btn px-4 sm:px-5 py-2.5 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold text-sm tracking-tight hover:scale-105 transition-all duration-300">Enroll Now</a>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden mt-3 glass-panel rounded-3xl p-4">
+      <div class="flex flex-col gap-2">
+        <a href="courses.html" data-i18n="nav_courses" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Courses</a>
+        <a href="pricing.html" data-i18n="nav_pricing" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Pricing</a>
+        <a href="contact.html" data-i18n="nav_contact" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Contact</a>
+        <a href="register.html" data-i18n="nav_cta" class="mt-1 px-4 py-3 rounded-2xl bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg text-sm font-bold text-center tracking-tight">Enroll Now</a>
       </div>
     </div>
   </nav>
@@ -418,39 +431,19 @@
 
         <!-- VIDEO SIDE -->
         <div class="hero-video-side">
-          <div class="video-mockup glass-panel">
-            <div class="video-shimmer"></div>
-            <!-- Decorative video thumbnail content -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
-              <div class="w-full h-full rounded-xl bg-brand-navy/5 dark:bg-brand-light/5 flex items-center justify-center relative overflow-hidden">
-                <!-- Animated decorative lines to simulate video content -->
-                <div class="absolute inset-0">
-                  <div class="absolute top-[15%] left-[8%] right-[8%] h-3 rounded-full bg-brand-navy/8 dark:bg-brand-light/10"></div>
-                  <div class="absolute top-[28%] left-[8%] w-[60%] h-3 rounded-full bg-brand-navy/6 dark:bg-brand-light/8"></div>
-                  <div class="absolute top-[42%] left-[8%] right-[15%] h-32 rounded-2xl bg-brand-navy/4 dark:bg-brand-light/5 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-4xl text-brand-navy/15 dark:text-brand-light/15">dentistry</span>
-                  </div>
-                  <div class="absolute bottom-[18%] left-[8%] right-[8%] h-3 rounded-full bg-brand-navy/6 dark:bg-brand-light/8"></div>
-                  <div class="absolute bottom-[8%] left-[8%] w-[45%] h-3 rounded-full bg-brand-navy/4 dark:bg-brand-light/6"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Play Button Overlay -->
-            <div class="play-btn">
-              <div class="play-circle bg-brand-navy/90 dark:bg-brand-light/90 shadow-2xl">
-                <span class="material-symbols-outlined text-3xl text-white dark:text-dark-bg">play_arrow</span>
-              </div>
-            </div>
-            <!-- Bottom bar -->
-            <div class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-brand-navy/10 dark:from-black/30 to-transparent flex items-end px-4 pb-2">
-              <div class="flex items-center gap-2 w-full">
-                <div class="w-3 h-3 rounded-full bg-brand-light/60 dark:bg-brand-light/40"></div>
-                <div class="flex-1 h-1 rounded-full bg-brand-navy/10 dark:bg-white/10 relative overflow-hidden">
-                  <div class="absolute left-0 top-0 h-full w-[35%] rounded-full bg-brand-light dark:bg-brand-light/60"></div>
-                </div>
-                <span class="text-[10px] font-bold text-brand-navy/30 dark:text-white/30" data-i18n="hero_video_time">12:34</span>
-              </div>
-            </div>
+          <div class="video-mockup glass-panel block w-full overflow-hidden">
+            <video
+              id="hero-inline-video"
+              class="w-full h-full object-cover rounded-xl"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            >
+              <source src="videos/intro.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
@@ -843,7 +836,44 @@
       setLanguage(next);
     });
 
-    // ——— INIT LANGUAGE ON LOAD ———
+    // --- MOBILE MENU TOGGLE ---
+    (function () {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenuToggle || !mobileMenu) return;
+
+      const menuIcon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        if (menuIcon) menuIcon.textContent = 'menu';
+      }
+
+      mobileMenuToggle.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const willOpen = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        if (menuIcon) menuIcon.textContent = willOpen ? 'close' : 'menu';
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) closeMobileMenu();
+      });
+    })();
+
+    // --- INIT LANGUAGE ON LOAD ---
     const savedLang = localStorage.getItem('lang') || 'en';
     setLanguage(savedLang);
 

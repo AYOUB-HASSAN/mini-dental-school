@@ -53,6 +53,21 @@
         <span class="material-symbols-outlined text-[20px] hidden dark:block">light_mode</span>
         <span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span>
       </button>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-full glass-panel flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-brand-navy dark:text-brand-light" aria-label="Toggle Navigation Menu" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="relative z-10 md:hidden hidden px-6 sm:px-10 pb-4">
+    <div class="glass-panel rounded-3xl p-4">
+      <div class="flex flex-col gap-2">
+        <a href="index.html" data-i18n="nav_home" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Home</a>
+        <a href="courses.html" data-i18n="nav_courses" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Courses</a>
+        <a href="pricing.html" data-i18n="nav_pricing" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Pricing</a>
+        <a href="contact.html" data-i18n="nav_contact" class="px-4 py-3 rounded-2xl text-sm font-semibold text-brand-navy dark:text-slate-100 hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-colors">Contact</a>
+        <a href="login.html" data-i18n="nav_login" class="mt-1 px-4 py-3 rounded-2xl bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg text-sm font-bold text-center tracking-tight">Sign In</a>
+      </div>
     </div>
   </div>
 
@@ -109,6 +124,7 @@
   <script>
     const translations = {
       en: {
+        nav_home:"Home",nav_courses:"Courses",nav_pricing:"Pricing",nav_contact:"Contact",nav_login:"Sign In",
         reg_title:"Create Account",reg_desc:"Start your journey to mastering dentistry",
         label_name:"Full Name",label_email:"Email Address",label_password:"Password",label_confirm:"Confirm Password",
         agree_text:"I agree to the",link_terms:"Terms of Service",and_text:"and",link_privacy:"Privacy Policy",
@@ -116,6 +132,7 @@
         have_account:"Already have an account?",link_login:"Sign in"
       },
       ar: {
+        nav_home:"الرئيسية",nav_courses:"الدورات",nav_pricing:"الأسعار",nav_contact:"تواصل",nav_login:"تسجيل الدخول",
         reg_title:"إنشاء حساب",reg_desc:"ابدأ رحلتك في إتقان طب الأسنان",
         label_name:"الاسم الكامل",label_email:"البريد الإلكتروني",label_password:"كلمة المرور",label_confirm:"تأكيد كلمة المرور",
         agree_text:"أوافق على",link_terms:"شروط الخدمة",and_text:"و",link_privacy:"سياسة الخصوصية",
@@ -135,6 +152,31 @@
     }
     document.getElementById('theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });
     document.getElementById('lang-toggle').addEventListener('click', function () { setLanguage((localStorage.getItem('lang') || 'en') === 'en' ? 'ar' : 'en'); });
+
+    (function () {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenuToggle || !mobileMenu) return;
+      const menuIcon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+      function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        if (menuIcon) menuIcon.textContent = 'menu';
+      }
+      mobileMenuToggle.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const willOpen = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        if (menuIcon) menuIcon.textContent = willOpen ? 'close' : 'menu';
+      });
+      mobileMenu.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMobileMenu); });
+      document.addEventListener('click', function (event) {
+        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) closeMobileMenu();
+      });
+      window.addEventListener('resize', function () { if (window.innerWidth >= 768) closeMobileMenu(); });
+    })();
+
     setLanguage(localStorage.getItem('lang') || 'en');
   </script>
 </body>

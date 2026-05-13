@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Mini Dental School</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts: English + Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script>
+    // Theme setup based on index.html
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    if (localStorage.getItem('lang') === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            arabic: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            brand: { navy: '#132560', light: '#7ebdff' },
+            dark: { bg: '#060d1f', card: '#0c1631', surface: '#111d3a' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] p, [dir="rtl"] a, [dir="rtl"] span, [dir="rtl"] button {
+      font-family: 'Cairo', sans-serif !important;
+    }
+
+    .glass-panel {
+      background: rgba(19, 37, 96, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(19, 37, 96, 0.08);
+      box-shadow: 0 4px 30px rgba(19, 37, 96, 0.05);
+      transition: all 0.3s ease;
+    }
+    .dark .glass-panel {
+      background: rgba(126, 189, 255, 0.06);
+      border: 1px solid rgba(126, 189, 255, 0.12);
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(126, 189, 255, 0.08);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .progress-bar-fill {
+      transition: width 1s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="antialiased font-sans bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-50 relative min-h-screen flex">
+  
+  <!-- Ambient background -->
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden h-screen">
+    <div class="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-brand-light/10 blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 w-[40vw] h-[40vw] rounded-full bg-brand-navy/5 blur-[120px] dark:bg-indigo-500/10"></div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="w-64 fixed inset-y-0 left-0 z-40 rtl:left-auto rtl:right-0 glass-panel border-r dark:border-white/5 flex flex-col justify-between overflow-y-auto hidden md:flex transition-transform duration-300">
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-10">
+        <a href="index.html" class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-brand-navy dark:text-brand-light text-3xl">school</span>
+            <span class="font-display font-bold text-xl text-brand-navy dark:text-white">Mini DS</span>
+        </a>
+      </div>
+
+      <nav class="space-y-2">
+        <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-navy/10 text-brand-navy dark:bg-brand-light/10 dark:text-brand-light font-semibold transition-colors">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="course-player.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-navy/70 dark:text-slate-400 hover:bg-brand-navy/5 hover:text-brand-navy dark:hover:bg-white/5 dark:hover:text-white transition-colors">
+          <span class="material-symbols-outlined">play_lesson</span>
+          <span>My Learning</span>
+        </a>
+        <a href="courses.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-navy/70 dark:text-slate-400 hover:bg-brand-navy/5 hover:text-brand-navy dark:hover:bg-white/5 dark:hover:text-white transition-colors">
+          <span class="material-symbols-outlined">search</span>
+          <span>Browse Courses</span>
+        </a>
+        <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-brand-navy/70 dark:text-slate-400 hover:bg-brand-navy/5 hover:text-brand-navy dark:hover:bg-white/5 dark:hover:text-white transition-colors">
+          <span class="material-symbols-outlined">person</span>
+          <span>Profile & Settings</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- User Snippet Bottom Sidebar -->
+    <div class="p-6 border-t border-brand-navy/5 dark:border-white/5">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-brand-light/20 flex items-center justify-center font-bold text-brand-navy dark:text-brand-light">JD</div>
+        <div>
+          <p class="text-sm font-semibold text-brand-navy dark:text-white">Dr. John Doe</p>
+          <a href="#" class="text-xs text-brand-navy/50 dark:text-slate-400 hover:underline">Log out</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 min-h-screen relative z-10 md:pl-64 rtl:md:pl-0 rtl:md:pr-64 flex flex-col">
+    
+    <!-- Top Header -->
+    <header class="h-20 glass-panel border-b border-brand-navy/5 dark:border-white/5 flex items-center justify-between px-6 sticky top-0 z-30">
+      <div class="flex items-center gap-4">
+        <!-- Mobile menu button -->
+        <button class="md:hidden p-2 rounded-full hover:bg-brand-navy/5 dark:hover:bg-white/5">
+          <span class="material-symbols-outlined text-brand-navy dark:text-white">menu</span>
+        </button>
+        <h1 class="text-xl font-display font-bold text-brand-navy dark:text-white">Dashboard</h1>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" class="p-2 rounded-full glass-panel hover:scale-105 transition-all text-brand-navy dark:text-brand-light flex items-center">
+          <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+          <span class="material-symbols-outlined block dark:hidden">dark_mode</span>
+        </button>
+        <!-- Notifications -->
+        <button class="p-2 rounded-full glass-panel relative hover:scale-105 transition-all text-brand-navy dark:text-brand-light">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-slate-50 dark:border-dark-bg"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="p-6 md:p-10 flex-1 overflow-x-hidden">
+      
+      <!-- Welcome Section -->
+      <div class="mb-10 flex flex-col lg:flex-row justify-between lg:items-end gap-6">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-brand-navy dark:text-white mb-2">Welcome back, John!</h2>
+          <p class="text-brand-navy/60 dark:text-slate-400 font-medium max-w-2xl">Ready to continue your journey? You are 40% through Oral Anatomy Mastery.</p>
+        </div>
+        <a href="course-player.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-navy text-white dark:bg-brand-light dark:text-dark-bg font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all">
+          <span class="material-symbols-outlined text-xl">play_circle</span>
+          <span>Resume Learning</span>
+        </a>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div class="glass-panel p-6 rounded-3xl">
+          <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-2xl">library_books</span>
+          </div>
+          <p class="text-sm font-semibold text-brand-navy/60 dark:text-slate-400 mb-1">Enrolled Courses</p>
+          <p class="text-3xl font-display font-bold text-brand-navy dark:text-white">3</p>
+        </div>
+        <div class="glass-panel p-6 rounded-3xl">
+          <div class="w-12 h-12 rounded-xl bg-brand-light/10 text-brand-navy dark:text-brand-light flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-2xl">check_circle</span>
+          </div>
+          <p class="text-sm font-semibold text-brand-navy/60 dark:text-slate-400 mb-1">Completed Lessons</p>
+          <p class="text-3xl font-display font-bold text-brand-navy dark:text-white">14</p>
+        </div>
+        <div class="glass-panel p-6 rounded-3xl">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-2xl">schedule</span>
+          </div>
+          <p class="text-sm font-semibold text-brand-navy/60 dark:text-slate-400 mb-1">Hours Watched</p>
+          <p class="text-3xl font-display font-bold text-brand-navy dark:text-white">8.5</p>
+        </div>
+        <div class="glass-panel p-6 rounded-3xl">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-2xl">local_fire_department</span>
+          </div>
+          <p class="text-sm font-semibold text-brand-navy/60 dark:text-slate-400 mb-1">Day Streak</p>
+          <p class="text-3xl font-display font-bold text-brand-navy dark:text-white">4</p>
+        </div>
+      </div>
+
+      <!-- Course In Progress -->
+      <h3 class="text-2xl font-display font-bold text-brand-navy dark:text-white mb-6">In Progress</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        
+        <!-- Course Card 1 -->
+        <div class="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row gap-6 relative overflow-hidden group hover:border-brand-navy/20 dark:hover:border-brand-light/30 transition-all">
+          <div class="w-full sm:w-48 h-32 rounded-2xl overflow-hidden relative shrink-0">
+            <!-- Simulated Video Thumbnail -->
+            <div class="absolute inset-0 bg-slate-200 dark:bg-slate-800">
+               <img src="screenshot.png" alt="Anatomy" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
+              <span class="material-symbols-outlined text-4xl text-white opacity-80 group-hover:scale-110 transition-transform">play_circle</span>
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <span class="text-xs font-bold text-brand-navy/60 dark:text-brand-light/70 uppercase tracking-wider mb-2">Module 2</span>
+            <h4 class="text-xl font-bold text-brand-navy dark:text-white mb-2">Anterior Teeth Anatomy</h4>
+            <p class="text-sm text-brand-navy/60 dark:text-slate-400 mb-4 font-medium">Lesson 3: Maxillary Central Incisor</p>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-brand-navy/10 dark:bg-white/10 rounded-full h-2.5 mb-2 overflow-hidden">
+              <div class="bg-brand-navy dark:bg-brand-light h-2.5 rounded-full progress-bar-fill" style="width: 40%"></div>
+            </div>
+            <div class="flex justify-between text-xs font-semibold text-brand-navy/60 dark:text-slate-400">
+              <span>40% Complete</span>
+              <span>15m left</span>
+            </div>
+            <a href="course-player.html" class="absolute inset-0 z-10"><span class="sr-only">Continue course</span></a>
+          </div>
+        </div>
+
+        <!-- Course Card 2 -->
+        <div class="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row gap-6 relative overflow-hidden group hover:border-brand-navy/20 dark:hover:border-brand-light/30 transition-all">
+          <div class="w-full sm:w-48 h-32 rounded-2xl overflow-hidden relative shrink-0">
+            <div class="absolute inset-0 bg-brand-light/20 flex flex-col items-center justify-center text-brand-navy dark:text-brand-light">
+              <span class="material-symbols-outlined text-4xl mb-1">science</span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors">
+              <span class="material-symbols-outlined text-4xl text-white opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle</span>
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <span class="text-xs font-bold text-brand-navy/60 dark:text-brand-light/70 uppercase tracking-wider mb-2">Module 1</span>
+            <h4 class="text-xl font-bold text-brand-navy dark:text-white mb-2">Dental Histology</h4>
+            <p class="text-sm text-brand-navy/60 dark:text-slate-400 mb-4 font-medium">Lesson 1: Introduction to Tissues</p>
+            <div class="w-full bg-brand-navy/10 dark:bg-white/10 rounded-full h-2.5 mb-2 overflow-hidden">
+              <div class="bg-brand-navy dark:bg-brand-light h-2.5 rounded-full progress-bar-fill" style="width: 5%"></div>
+            </div>
+            <div class="flex justify-between text-xs font-semibold text-brand-navy/60 dark:text-slate-400">
+              <span>5% Complete</span>
+              <span>2h 10m total</span>
+            </div>
+            <a href="course-player.html" class="absolute inset-0 z-10"><span class="sr-only">Continue course</span></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Simple theme toggle functionality
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
